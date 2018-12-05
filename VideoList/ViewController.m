@@ -24,7 +24,7 @@
     UIButton *offsetBtn = [[UIButton alloc] initWithFrame:CGRectMake(200, 0, 100, 50)];
     [offsetBtn setBackgroundColor:[UIColor purpleColor]];
     [offsetBtn addTarget:self action:@selector(changeOffSet) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:offsetBtn];
+//    [self.view addSubview:offsetBtn];
 }
 
 -(void)changeOffSet
