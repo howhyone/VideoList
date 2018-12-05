@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong)UIScrollView *scrollView;
 @property(nonatomic, strong)UIView *cellView;
 @property(nonatomic, strong)UIView *headView;
+@property(nonatomic, strong)UIPageControl *pageControl;
 
 @end
 

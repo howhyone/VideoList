@@ -17,8 +17,16 @@
         _scrollView.contentSize = CGSizeMake(105 * 10, 100);
         _scrollView.delegate = self;
         _scrollView.bounces = NO;
+        _scrollView.pagingEnabled= YES;
+        UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 10, 100, 80)];
+        pageControl.numberOfPages = 5;
+        pageControl.currentPageIndicatorTintColor = [UIColor yellowColor];
+        pageControl.pageIndicatorTintColor = [UIColor redColor];
+        [pageControl addTarget:self action:@selector(pageChange) forControlEvents:UIControlEventTouchUpOutside];
+        self.pageControl = pageControl;
+      
         [self addSubview:_scrollView];
-        
+//          [self addSubview:pageControl];
         for (int i = 0; i < 105 * 10 / (100 + 5); i++) {
             _cellView = [[UIView alloc] initWithFrame:CGRectMake(i * (100+5), 10, 100, 80)];
             _cellView.layer.cornerRadius = 0.3;
@@ -35,6 +43,14 @@
     return self;
 }
 
+-(void)pageChange
+{
+    NSInteger page = _pageControl.currentPage;
+    CGFloat offSetX = page * _pageControl.frame.size.width;
+    [UIView beginAnimations:nil context:nil];
+    _scrollView.contentOffset = CGPointMake(offSetX, 0);
+    [UIView commitAnimations];
+}
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
